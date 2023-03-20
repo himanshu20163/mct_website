@@ -23,6 +23,9 @@
    background: blue;
     color: white;
 }
+a{
+    color:black;
+}
 .right_box{
     height:100%;
    width:65%;
