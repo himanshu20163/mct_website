@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './users.css';
+import './user.css';
 
 const User = () => {
   const [genderResult, setGenderResult] = useState({ results: [] });
