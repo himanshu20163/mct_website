@@ -1,271 +1,90 @@
-/* .users{
+.subnavuser{
     width: 100%;
-    /* border: 2px red solid; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.user-maincontainer{
-    /* border: 2px black solid; */
-    width: 90%;
-    margin-top: 2rem;
-}
-.user-maincontainer h1{
-    padding: 10px 0px;
-}
-.user-maincontainer p{
-    padding: 5px 0px;
-}
-
-.radio-btn{
-    width: 35%;
-    padding: 8px 0px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.radio-container{
-    /* border: 2px blue solid; */
-    width: 40%;
-    height: 100%;
-    padding: 8px 0px;
-
-
-}
-
-.radio-container input{
-    width: 30px;
-    height: 15px;
-}
-
-.userconatiner{
-    /* border: 2px green solid; */
-    width: 100%;
-    height: 100%;
-    margin-top: 1rem;
-}
-
-.usermaincontainer :hover{
-   background-color: rgb(230, 228, 228);
-   cursor: pointer;
-}
-.userheader{
-    /* border:2px red solid; */
-    width: 100%;
-    height: 8vh;
+    height: 40px;
     display: flex;
     background-color: black;
     color: white;
-}
-
-.image-con{
-    /* border:2px blue solid; */
-    width: 22%;
-    height: 100%;
+    font-weight: 700;
     display: flex;
     align-items: center;
-    padding-left: 5px;
-
+    justify-content: space-around;
 }
-.name-con{
-    /* border:2px blue solid; */
-    width: 20%;
-    height: 100%;
+.cards{
     display: flex;
     align-items: center;
-}
-.email-con{
-    /* border: 2px red solid; */
-    width: 36%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-}
+    margin: 10px;
+    border-bottom: 1px solid grey;
+    padding: 10px;
+    justify-content: space-around;
 
-.gender-con{
-    /* border: 2px red solid; */
-    width: 22%;
-    height: 100%;
-    display: flex;
-    align-items: center;
 }
+.inputsradi{
+    display: flex;
 
-.userdata{
-    height: 20vh;
-    background-color: white;
-    padding-top: 0.5rem;
+
+}
+.card2 {
+    display: block;
+    top: 0px;
+    position: relative;
+    max-width: 262px;
+    background-color: #f2f8f9;
+    border-radius: 4px;
+    padding: 32px 24px;
+    margin: 12px;
+    text-decoration: none;
+    z-index: 0;
+    overflow: hidden;
+    border: 1px solid #f2f8f9;
+  
+    &:hover {
+      transition: all 0.2s ease-out;
+      box-shadow: 0px 4px 8px rgba(38, 38, 38, 0.2);
+      top: -4px;
+      border: 1px solid #cccccc;
+      background-color: white;
+    }
+  
+    &:before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      top: -16px;
+      right: -16px;
+      background: #00838d;
+      height: 32px;
+      width: 32px;
+      border-radius: 32px;
+      transform: scale(2);
+      transform-origin: 50% 50%;
+      transition: transform 0.15s ease-out;
+    }
+  &:hover:before {
+      transform: scale(2.15);
+    }
+  }
+  
+.inputsradi label{
+    margin: 20px;
+}
+.maincontaineruser{
+
     color: black;
-    border-bottom: 1px gray solid;
+    padding: 40px;
 }
-.image-con img{
-    width: 100px;
-    height: 100px;
-}
-.userdatacontent{
-    display: inline;
-
-   
-
-}
-
-
-@media  only screen and (max-width:480px) {
-    .user-maincontainer{
-        /* border: 2px black solid; */
-        width: 90%;
-        margin-top: 2rem;
-    }
-    .user-maincontainer h1{
-        font-size: 1rem;
-    }
-    .user-maincontainer p{
-        font-size: 0.8rem;
-    }
+.maincontaineruser h1{
+    color: black;
     
-    .radio-btn{
-        /* border: 2px blue solid; */
-        width: 100%;
-        padding: 5px 0px;
-     
-    }
-  
-    .radio-container label{
-        font-size: 0.9rem;
-    }
-   
-    .userheader{
-        font-size: 0.8rem;
-    }
-  
-    .name-con{
-        /* border:2px blue solid; */
-        width: 17%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-    }
-    .email-con{
-        /* border: 2px red solid; */
-        width: 40%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        
-    }
-    
-    .gender-con{
-        /* border: 2px red solid; */
-        width: 20%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        margin-left: 10px;
-    }
-    
-    .userdata{
-        height: 15vh;
-    
-    }
-    .image-con img{
-        width: 50px;
-        height: 50px;
-    }
-    .userdatacontent{
-        display: inline;
-    
-       
-    
-    }
-   
-    
+} 
+/* .imagewala{
+    margin-left: 30px;
 }
-@media  only screen and (min-width:481px) and (max-width:600px) {
-   
-    .radio-btn{
-        width: 80%;
-        padding: 5px 0px;
-     
-    }
-    
+.namewala{
+    margin-left: 120px;
 }
-@media  only screen and (min-width:601px) and (max-width:800px) {
-    .radio-btn{
-        width: 60%;
-        padding: 5px 0px;
-     
-    }
-
-    
+.emailwala{
+    margin-left: 300px;
 }
- */
-
-
-.user{
-    margin-top: 30px;
-}
-.userHead{
-    height: 7%;
-    width: 100%;
-    text-align: left;
-    padding: 10px;
-}
-.desc{
-    padding: 10px;
-    text-align: left;
-    height: 18%;
-    width: 100%;
-}
-.inputsRadio{
-    height: 5%;
-    width: 100%;
-    display: flex;
-    align-items: center;
-}
-.cardContainer{
-    height: 70%;
-    width: 100%;
-}
-.cardHeader{
-    width: 100%;
-    height: 7%;
-    display: flex;
-    align-items: center;
-    color: white;
-    background-color: black;
-}
-.img{
-    width: 15%;
-}
-.name1{
-    width: 25%;
-}
-.email{
-    width: 30%;
-}
-.gender{
-    width: 20%;
-    text-align: end;
-}
-.card1{  
-    height: 25%;
-    margin: 5px;
-
-}
-.card2{
-    height: 80%;
-    display: flex;
-    display: flex;
-    align-items: center;
-    margin: 1px;
-    border-bottom: 1px solid grey;
-}
-.card:hover{
-    height: 80%;
-    display: flex;
-    display: flex;
-    align-items: center;
-    margin: 1px;
-    border-bottom: 1px solid grey;
-    background-color: #e8e5e5;
-}
+.genderwala{
+    margin-left: 600px;
+} */
