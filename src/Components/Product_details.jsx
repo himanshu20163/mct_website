@@ -4,7 +4,7 @@ import "./Details.css"
 
 const Product_details = ({detail}) => {
   return (
-    <div className='container det '>
+    <div className='det '>
         <h1 className='header11 '> {detail.category} Category</h1>
         <Link to="/Products"><div className="cross center">↞</div></Link>
         <img src={detail.image} alt="" height={300} />
@@ -29,4 +29,5 @@ const Product_details = ({detail}) => {
     </div>
   )
 }
+
 export default Product_details
