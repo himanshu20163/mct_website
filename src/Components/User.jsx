@@ -1,163 +1,59 @@
-// import React, { useEffect, useState } from 'react'
-// import "./user.css"
-
-// const User = () => {
-    
-//       const data = useSelector((state) => state);
-//     const [userdata, setUserdata] = useState([...data.usersDetail])
-    
-//     const [gender, setgender] = useState("all")
-//     const [Userdata, setUdata] = useState([])
-//     function hello(e){
-//         setgender(e.target.value)
-//         console.log(gender);
-//         console.log(Userdata);
-
-//     }
-//     useEffect(()=>{
-//       getData();
-//     },[gender])
-//     async function getData(){
-//         const res=await fetch(`https://randomuser.me/api/?results=30`)
-//         const data= await res.json();
-//         console.log(Userdata);
-//         if(gender==="male" || gender==="female"){   
-//         const filtereddata=data.results.filter((e)=>e.gender===gender)
-//         setUdata(filtereddata);
-//     }
-//     else if(gender==="all"){
-//         setUdata(data.results)
-//         console.log(Userdata);
-//         console.log("elseif");
-//     }
-//     }
-//   return (
-//     <>
-//         {/* <Navbar/> */}
-//     <div className='user container center col '>
-//     <div className="userHead  "><h2>User Details</h2></div>
-//     <div className="desc ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium illo delectus odit voluptate enim quas debitis, illum doloribus inventore quo, nam praesentium, iste autem dolor. Tenetur debitis eveniet quia aliquid.
-//     Assumenda, illo dolore quos consectetur veniam asperiores ad perferendis, numquam sapiente quibusdam quo fugiat reprehenderit quisquam nemo itaque, sequi a magnam laudantium dicta amet? Quo, ducimus blanditiis. Corporis, reprehenderit atque.
-//     Ab nostrum dicta aut optio iusto animi lae dignissimos incidunt commodi aliquid nemo, exercitationem autem minus tempora non corporis maxime excepturi corrupti vero blanditiis eveniet dolore quasi possimus distinctio. Perspiciatis.</div>
-//     <div className="inputsRadio " onChange={(e)=>hello(e)}>
-//     <span><input type="radio" name="gender" id="" value="all" defaultChecked />
-//         All</span>
-//         <span>
-//         <input type="radio" name="gender" value="female" id="" />
-//         Female</span>
-//         <span>
-//         <input type="radio" name="gender" value="male" id="" />
-//        Male</span>
-//     </div>
-//     <div className="cardContainer ">
-//         <div className="cardHeader ">
-//             <div className='img'>IMAGE</div>
-//             <div className='name1'>NAME</div>
-//             <div className='email'>EMAIL</div>
-//             <div className='gender'>GENDER</div>
-//         </div>
-//         <div className="card1 col">
-//         {Userdata.length>1?(Userdata.map((e,i)=>{
-//             return(
-//                 <div className='card2' key={i}>
-//                 <div className='img'>
-//             <img src={e.picture.thumbnail} alt="" width={170} />
-//         </div>
-//             <div className='name1'>{e.name.title} {e.name.first} {e.name.last}</div>
-//             <div className='email'>{e.email}</div>
-//             <div className='gender'>{e.gender}</div>
-//             </div>
-//             )
-//         })):null}
-//         </div>
-//     </div>
-       
-//     </div>
-//     </>
-//   )
-// }
-
-// export default User
-
-
-
-import React, { useEffect, useState } from 'react'
-import "./user.css"
+import React, { useEffect, useState } from 'react';
+import './users.css';
 
 const User = () => {
-    
-      const data = useSelector((state) => state);
-    const [userdata, setUserdata] = useState([...data.usersDetail])
-    
-    const [gender, setgender] = useState("all")
-    const [Userdata, setUdata] = useState([])
-    function hello(e){
-        setgender(e.target.value)
-        console.log(gender);
-        console.log(Userdata);
+  const [genderResult, setGenderResult] = useState({ results: [] });
+  const [selectedGender, setSelectedGender] = useState("all");
+  
 
-    }
-    useEffect(()=>{
-      getData();
-    },[gender])
-    async function getData(){
-        const res=await fetch(`https://randomuser.me/api/?results=30`)
-        const data= await res.json();
-        console.log(Userdata);
-        if(gender==="male" || gender==="female"){   
-        const filtereddata=data.results.filter((e)=>e.gender===gender)
-        setUdata(filtereddata);
-    }
-    else if(gender==="all"){
-        setUdata(data.results)
-        console.log(Userdata);
-        console.log("elseif");
-    }
-    }
+  const fetchData = async () => {
+    const url = selectedGender === 'all'
+      ? "https://randomuser.me/api/?results=20"
+      : `https://randomuser.me/api/?results=20&gender=${selectedGender}`;
+    const response = await fetch(url);
+    const data = await response.json();
+    setGenderResult(data);
+  }
+
+  const handleGenderChange = (event) => {
+    const genderValue = event.target.value;
+    setSelectedGender(genderValue);
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, [selectedGender]);
+
   return (
     <>
-        {/* <Navbar/> */}
-    <div className='user container center col '>
-    <div className="userHead  "><h2>User Details</h2></div>
-    <div className="desc ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium illo delectus odit voluptate enim quas debitis, illum doloribus inventore quo, nam praesentium, iste autem dolor. Tenetur debitis eveniet quia aliquid.
-    Assumenda, illo dolore quos consectetur veniam asperiores ad perferendis, numquam sapiente quibusdam quo fugiat reprehenderit quisquam nemo itaque, sequi a magnam laudantium dicta amet? Quo, ducimus blanditiis. Corporis, reprehenderit atque.
-    Ab nostrum dicta aut optio iusto animi lae dignissimos incidunt commodi aliquid nemo, exercitationem autem minus tempora non corporis maxime excepturi corrupti vero blanditiis eveniet dolore quasi possimus distinctio. Perspiciatis.</div>
-    <div className="inputsRadio " onChange={(e)=>hello(e)}>
-    <span><input type="radio" name="gender" id="" value="all" defaultChecked />
-        All</span>
-        <span>
-        <input type="radio" name="gender" value="female" id="" />
-        Female</span>
-        <span>
-        <input type="radio" name="gender" value="male" id="" />
-       Male</span>
-    </div>
-    <div className="cardContainer ">
-        <div className="cardHeader ">
-            <div className='img'>IMAGE</div>
-            <div className='name1'>NAME</div>
-            <div className='email'>EMAIL</div>
-            <div className='gender'>GENDER</div>
+      <Navbar />
+      <div className='maincontaineruser'>
+        <div className='subcontaineruser'>
+          <h1>Users</h1>
+          <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
         </div>
-        <div className="card1 col">
-        {Userdata.length>1?(Userdata.map((e,i)=>{
-            return(
-                <div className='card2' key={i}>
-                <div className='img'>
-            <img src={e.picture.thumbnail} alt="" width={170} />
+        <div className='inputsradi'>
+        <label><input type="radio" name='gender' value="all" onChange={handleGenderChange} checked={selectedGender === 'all'} />All</label>
+         <label><input type="radio" name='gender' value="male" onChange={handleGenderChange} checked={selectedGender === 'male'} />Male</label>
+          <label><input type="radio" name='gender' value="female" onChange={handleGenderChange} checked={selectedGender === 'female'} />Female</label>
         </div>
-            <div className='name1'>{e.name.title} {e.name.first} {e.name.last}</div>
-            <div className='email'>{e.email}</div>
-            <div className='gender'>{e.gender}</div>
-            </div>
-            )
-        })):null}
+        <div className='subnavuser'>
+          <span className='imagewala'>IMAGE</span>
+          <span className='namewala'>NAME</span>
+          <span className='emailwala'>EMAIL</span>
+          <span className='genderwala'>GENDER</span>
         </div>
-    </div>
-       
-    </div>
+        {genderResult.results.map((ele) => (
+          <div className='cards' key={ele.login.uuid}>
+            <img src={ele.picture.large} alt="pic" ></img>
+            <h3>{ele.name.first}&nbsp;&nbsp;{ele.name.last}</h3>
+            <h4>{ele.email}</h4>
+            <h2>{ele.gender}</h2>
+          </div>
+        ))}
+      </div>
     </>
   )
 }
 
-export default User
+export default User;
