@@ -13,6 +13,7 @@ const User = () => {
     const response = await fetch(url);
     const data = await response.json();
     setGenderResult(data);
+    console.log(data);
   }
 
   const handleGenderChange = (event) => {
